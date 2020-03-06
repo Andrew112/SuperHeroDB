@@ -10,3 +10,30 @@
         }
     });
 }
+function editHero() {
+    var heroId = {
+
+        "FirstName": $("#updateFirstname").val(),
+        "Lastname": $("#updateLastname").val(),
+        "HeroName": $("#updateHeroname").val(),
+        "PlaceOfBirth": $("#updatePlaceOfBirth").val(),
+        "CombatPoints": $("#updateCombatPoints").val()
+    };
+
+    $.ajax({
+        url: "Service/SuperHeroService.svc/editHero",
+        type: "PUT",
+        datatype: "json",
+        contentType: "application/json",
+        data: JSON.stringify(heroId),
+        success: function (result) {
+            heroId = result;
+            editHero(result);
+            showAdd();
+           // console.log(heroId);
+
+            //success: function () {
+               // showAdd();
+        }
+    });
+}
