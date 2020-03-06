@@ -10,6 +10,8 @@
         }
     });
 }
+
+//New code for editHero function..
 function editHero() {
     var heroId = {
 
