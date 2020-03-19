@@ -82,7 +82,18 @@ namespace SuperHeroDB.Service
 			return hero;
 
 		}
+		
+
+		[OperationContract]
+		[WebInvoke(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+			UriTemplate = "DeleteHero/{id}", Method = "DELETE")]
+		public List<SuperHero> DeleteHero(string id)
+		{
+			Data.SuperHeroes = Data.SuperHeroes.Where(sh => sh.Id != int.Parse(id)).ToList();
+
+			return Data.SuperHeroes;
+
 }
-}
+	}
 
 
