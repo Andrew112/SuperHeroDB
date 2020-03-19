@@ -53,3 +53,15 @@ function putHero() {
         }
     });
 }
+function deleteHero(heroId) {
+
+    $.ajax({
+        url: "Service/SuperHeroService.svc/DeleteHero/" + heroId,
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            getAllHeroes();
+
+        }
+    });
+}
