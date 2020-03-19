@@ -1,6 +1,6 @@
-﻿function getAllHeroes() {
+function getAllHeroes() {
     $.ajax({
-        url: "Service / SuperHeroService.svc / GetAllHeroes",
+        url: "Service/SuperHeroService.svc/GetAllHeroes",
         type: "GET",
         dataType: "json",
         success: function (result) {
@@ -11,31 +11,48 @@
     });
 }
 
-//New code for editHero function..
-function editHero() {
-    var heroId = {
-
-        "FirstName": $("#updateFirstname").val(),
-        "Lastname": $("#updateLastname").val(),
-        "HeroName": $("#updateHeroname").val(),
-        "PlaceOfBirth": $("#updatePlaceOfBirth").val(),
-        "CombatPoints": $("#updateCombatPoints").val()
+function addHero() {
+    var newHero = {
+        "FirstName": $("#addFirstname").val(),
+        "LastName": $("#addLastname").val(),
+        "HeroName": $("#addHeroname").val(),
+        "PlaceOfBirth": $("#addPlaceOfBirth").val(),
+        "Combat": $("#addCombatPoints").val()
     };
 
     $.ajax({
-        url: "Service/SuperHeroService.svc/editHero",
+        url: "Service/SuperHeroService.svc/AddHero",
+        type: "POST",
+        datatype: "json",
+        contentType: "application/json",
+        data: JSON.stringify(newHero),
+        success: function () {
+            showOverview();
+        }
+    });
+}
+
+function putHero() {
+    updateHero = $("#UpdateFirstname").val();
+    updateHero = $("#UpdateLastname").val();
+    updateHero = $("#UpdateHeroname").val();
+    updateHero = $("#UpdatePlaceOfBirth").val();
+    updateHero = $("#UpdateCombatPoints").val();
+
+
+    $.ajax({
+        url: "Service/SuperHeroService.svc/UpdateHero/" + updateHero.Id,
         type: "PUT",
         datatype: "json",
         contentType: "application/json",
-        data: JSON.stringify(heroId),
-        success: function (result) {
-            heroId = result;
-            editHero(result);
-            showAdd();
-           // console.log(heroId);
+        data: JSON.stringify(updateHero),
+        success: function () {
+            showOverview();
+            //heroId = result;
+            //editHero(heroId);
+            //showAdd();
+            //console.log(heroId);
 
-            //success: function () {
-               // showAdd();
         }
     });
 }
