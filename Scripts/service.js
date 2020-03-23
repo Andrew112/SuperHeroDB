@@ -33,11 +33,11 @@ function addHero() {
 }
 
 function putHero() {
-    updateHero = $("#UpdateFirstname").val();
-    updateHero = $("#UpdateLastname").val();
-    updateHero = $("#UpdateHeroname").val();
-    updateHero = $("#UpdatePlaceOfBirth").val();
-    updateHero = $("#UpdateCombatPoints").val();
+    updateHero.Firstname = $("#UpdateFirstname").val();        
+    updateHero.LastName = $("#UpdateLastname").val();
+    updateHero.HeroName = $("#UpdateHeroname").val();
+    updateHero.PlaceOfBirth = $("#UpdatePlaceOfBirth").val();
+    updateHero.Combat = $("#UpdateCombatPoints").val();
 
 
     $.ajax({
