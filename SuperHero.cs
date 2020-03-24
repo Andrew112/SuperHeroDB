@@ -14,5 +14,6 @@
 
         public int Combat { get; set; }
 
-    }
+		//public int registerId { get; set; }
+	}
 }
